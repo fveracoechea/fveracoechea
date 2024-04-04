@@ -1,21 +1,16 @@
 name: GitHub-Profile-Summary-Cards
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
   create:
-  schedule: # execute every 24 hours
+  push:
+  schedule:
     - cron: "* */24 * * *"
+  workflow_dispatch:
 
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
-    name: generate-github-cards
-    permissions:
-      contents: write
-  
+    name: generate
     steps:
       - uses: actions/checkout@v2
       - uses: vn7n24fzkq/github-profile-summary-cards@release
